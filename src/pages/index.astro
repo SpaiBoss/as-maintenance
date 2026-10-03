@@ -1,0 +1,141 @@
+---
+import Base from "../layouts/Base.astro";
+import TapeRule from "../components/TapeRule.astro";
+import ContactButtons from "../components/ContactButtons.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import Steps from "../components/Steps.astro";
+import ReviewList from "../components/ReviewList.astro";
+import ServiceAreaList from "../components/ServiceAreaList.astro";
+import EstimateComposer from "../components/EstimateComposer.astro";
+import Photo from "../components/Photo.astro";
+import { getImage } from "astro:assets";
+import { servicePages, site } from "../config/site";
+import { photoAlt, photoForService, photos } from "../lib/photos";
+
+const heroBg = await getImage({
+  src: photos.hero,
+  widths: [640, 960, 1400],
+  quality: 62,
+  format: "webp",
+});
+
+const trustBits: string[] = [];
+if (site.licenseNumber) trustBits.push(`License ${site.licenseNumber}`);
+if (site.insured) trustBits.push("Insured");
+if (site.hours) trustBits.push(site.hours);
+if (site.reviews.length > 0) trustBits.push("Customer reviews");
+const trust =
+  trustBits.length > 0
+    ? trustBits.join(" · ")
+    : "Free estimates · No obligation · Residential and rental properties";
+
+const why = [
+  ["Professional and reliable", "We do the work we agree to do."],
+  ["Affordable pricing", "You get a free estimate before the work starts."],
+  ["Quality workmanship", "Careful work on the job you send us."],
+  ["Free estimates", "No obligation and no pressure."],
+  ["Residential and rental properties", "Homes and rental properties are both welcome."],
+  ["No job too small", "A short repair is still worth a call or a text."],
+];
+---
+
+<Base
+  title="Handyman in the Twin Cities, MN | A&S Maintenance"
+  description="Flooring, drywall, painting, furniture assembly and rental property repairs across the Twin Cities. Free estimates. Call or text 612-707-3149."
+>
+  <section class="hero hero-screen">
+    <img
+      class="hero-bg"
+      src={heroBg.src}
+      srcset={heroBg.srcSet.attribute}
+      sizes="100vw"
+      alt={photoAlt.hero}
+      width={heroBg.attributes.width}
+      height={heroBg.attributes.height}
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="wrap hero-copy">
+      <p class="eyebrow">Your local handyman</p>
+      <h1>Handyman services across the Twin Cities</h1>
+      <p class="lede">Flooring, drywall, painting, furniture assembly, and rental property repairs. Free estimates.</p>
+      <ContactButtons trackLabel="hero" tone="dark" />
+      <p class="hero-area">
+        Serving <a href="/service-area/">{site.region}</a>.
+      </p>
+    </div>
+    <TapeRule />
+  </section>
+
+  <p class="trust">{trust}</p>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>What we fix and install</h2>
+      <p class="section-lede">Pick a job, then call or text a photo for a free estimate.</p>
+      <ul class="service-list">
+        {
+          servicePages.map((service) => (
+            <ServiceCard
+              href={service.href}
+              title={service.nav}
+              summary={service.summary}
+              image={photoForService(service.id).src}
+            />
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <Steps
+    steps={[
+      { title: "Text or call with the job", text: "Tell us what you need. A photo helps." },
+      { title: "Get a free estimate", text: "Free estimates, with no obligation and no pressure." },
+      { title: "Book a time", text: "Pick a time if you want the work done." },
+    ]}
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Why people call A&S</h2>
+      <p class="section-lede">Plain promises from the flyer, not a long pitch.</p>
+      <ul class="why">
+        {
+          why.map(([title, text]) => (
+            <li>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <ReviewList />
+
+  {
+    site.features.beforeAfter && (
+      <section class="section">
+        <div class="wrap">
+          <h2>Before and after</h2>
+          <p class="measure">Before and after photos of finished jobs will go here.</p>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="section section-area">
+    <div class="wrap area-grid">
+      <div>
+        <h2>Across the Twin Cities</h2>
+        <p class="section-lede">Homes and rental properties in these cities, and more nearby.</p>
+        <ServiceAreaList linked />
+      </div>
+      <Photo src={photos.homes} alt={photoAlt.homes} class="photo area-photo" />
+    </div>
+  </section>
+
+  <EstimateComposer />
+</Base>

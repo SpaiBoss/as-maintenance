@@ -1,0 +1,23 @@
+---
+import { site } from "../config/site";
+
+interface Props {
+  placement: string;
+}
+
+const { placement } = Astro.props;
+---
+
+<div class="email-line" data-email-line>
+  <span data-email-value>{site.email}</span>
+  <button
+    type="button"
+    class="btn btn-navy"
+    data-copy-email
+    data-track="copy_email"
+    data-placement={placement}
+  >
+    Copy
+  </button>
+  <span class="copy-status" data-copy-status aria-live="polite"></span>
+</div>

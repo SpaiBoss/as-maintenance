@@ -1,0 +1,55 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Faq from "../components/Faq.astro";
+import RelatedLinks from "../components/RelatedLinks.astro";
+import ClosingCta from "../components/ClosingCta.astro";
+import { photoAlt, photos } from "../lib/photos";
+---
+
+<Base
+  title="Furniture Assembly Service | Twin Cities | A&S Maintenance"
+  description="Assembly for all types of furniture in the Twin Cities. Text the item, a box photo or a link, and the room. Free estimates."
+>
+  <PageHero
+    crumb="Furniture assembly"
+    title="Furniture assembly"
+    lede="Assembly for all types of furniture. Text the item, a photo of the box or a link, and the room."
+    image={photos.furniture}
+    imageAlt={photoAlt.furniture}
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>All types of furniture</h2>
+      <p class="measure">
+        Beds, tables, shelving, desks, and other boxed furniture. If you have the item, we can talk through the job.
+      </p>
+      <h2>What to text</h2>
+      <p class="measure">Send the item name, a photo of the box or a product link, and the room it goes in.</p>
+    </div>
+  </section>
+
+  <Faq
+    items={[
+      {
+        question: "What can you assemble?",
+        answer: "All types of furniture.",
+      },
+      {
+        question: "What should I text?",
+        answer: "The item, a photo of the box or a link, and the room it goes in.",
+      },
+      {
+        question: "Is the estimate free?",
+        answer: "Yes. Free estimates, with no obligation and no pressure.",
+      },
+      {
+        question: "How do I book?",
+        answer: "Text or call with the job, get a free estimate, then book a time.",
+      },
+    ]}
+  />
+  <RelatedLinks id="furniture" />
+  <ClosingCta />
+</Base>

@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import CopyEmail from "../components/CopyEmail.astro";
+import EstimateComposer from "../components/EstimateComposer.astro";
+import { site } from "../config/site";
+import { photoAlt, photos } from "../lib/photos";
+---
+
+<Base
+  title="Call, Text or Email | A&S Maintenance"
+  description="Call or text 612-707-3149, or email services@asmaintenanceservices.com for a free Twin Cities estimate. No obligation."
+>
+  <PageHero
+    title="Call, text or email us"
+    lede="Free estimates for homes and rental properties in the Twin Cities. No obligation and no pressure."
+    showEmail
+    image={photos.rental}
+    imageAlt={photoAlt.rental}
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Email</h2>
+      <CopyEmail placement="hero" />
+      {site.hours && <p>Hours: {site.hours}</p>}
+      <p class="measure">Serving {site.region}, and more nearby.</p>
+    </div>
+  </section>
+
+  <EstimateComposer />
+</Base>

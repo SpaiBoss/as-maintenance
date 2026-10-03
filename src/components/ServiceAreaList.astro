@@ -1,0 +1,18 @@
+---
+import { site } from "../config/site";
+
+interface Props {
+  linked?: boolean;
+}
+
+const { linked = false } = Astro.props;
+---
+
+<ul class="city-list">
+  {
+    site.cities.map((city) => (
+      <li>{linked ? <a href="/service-area/">{city}</a> : <span>{city}</span>}</li>
+    ))
+  }
+  <li><span>and more nearby</span></li>
+</ul>

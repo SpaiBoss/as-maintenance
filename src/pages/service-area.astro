@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import ServiceAreaList from "../components/ServiceAreaList.astro";
+import ClosingCta from "../components/ClosingCta.astro";
+import { site } from "../config/site";
+import { photoAlt, photos } from "../lib/photos";
+---
+
+<Base
+  title="Service Area: Twin Cities Metro | A&S Maintenance"
+  description="A&S Maintenance serves Saint Paul, Minneapolis, Maplewood, Woodbury, Eagan, Roseville, and nearby Twin Cities communities."
+>
+  <PageHero
+    title="Serving the Twin Cities metro area"
+    lede={`${site.name} works in these cities and nearby communities across the Twin Cities metro.`}
+    image={photos.homes}
+    imageAlt={photoAlt.homes}
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Cities we serve</h2>
+      <p class="measure">
+        We cover homes and rental properties in the Twin Cities metro, including the cities below, and more nearby.
+      </p>
+      <ServiceAreaList />
+    </div>
+  </section>
+
+  <ClosingCta />
+</Base>

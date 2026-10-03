@@ -1,0 +1,26 @@
+---
+import { site } from "../config/site";
+---
+
+{
+  site.reviews.length > 0 && (
+    <section class="section">
+      <div class="wrap">
+        <h2>Customer reviews</h2>
+        <ul class="review-list">
+          {site.reviews.map((review) => (
+            <li>
+              <blockquote>
+                <p>{review.text}</p>
+              </blockquote>
+              <p>
+                {review.name}
+                {review.city ? `, ${review.city}` : ""}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}

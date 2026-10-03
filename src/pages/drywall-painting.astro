@@ -1,0 +1,68 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Faq from "../components/Faq.astro";
+import RelatedLinks from "../components/RelatedLinks.astro";
+import ClosingCta from "../components/ClosingCta.astro";
+import Photo from "../components/Photo.astro";
+import { photoAlt, photos } from "../lib/photos";
+---
+
+<Base
+  title="Drywall Repair & Interior Painting | Twin Cities | A&S Maintenance"
+  description="Drywall repair, installation, and finishing, plus interior painting and touch-ups in the Twin Cities. Free estimates. Call or text 612-707-3149."
+>
+  <PageHero
+    crumb="Drywall and painting"
+    title="Drywall repair and interior painting"
+    lede="Drywall repair, installation, and finishing, plus interior painting and touch-ups."
+    image={photos.drywall}
+    imageAlt={photoAlt.drywall}
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <Photo src={photos.drywall} alt={photoAlt.drywall} sizes="(min-width: 800px) 16rem, 100vw" />
+        <div>
+          <h2>Drywall</h2>
+          <p class="measure">We repair holes and cracks, hang new drywall, and finish the surface.</p>
+        </div>
+      </div>
+      <div class="split">
+        <Photo src={photos.painting} alt={photoAlt.painting} sizes="(min-width: 800px) 16rem, 100vw" />
+        <div>
+          <h2>Interior painting</h2>
+          <p class="measure">We paint rooms and do touch-ups on interior walls and trim.</p>
+        </div>
+      </div>
+      <div class="subsection">
+        <h2>What to text</h2>
+        <p class="measure">Send a photo of the wall or the room, and say what you want done.</p>
+      </div>
+    </div>
+  </section>
+
+  <Faq
+    items={[
+      {
+        question: "What drywall work do you do?",
+        answer: "Repair, installation, and finishing.",
+      },
+      {
+        question: "What painting do you do?",
+        answer: "Interior painting and touch-ups.",
+      },
+      {
+        question: "What should I text?",
+        answer: "A photo of the damage or the room, and what you want done.",
+      },
+      {
+        question: "Are estimates free?",
+        answer: "Yes. Free estimates, with no obligation and no pressure.",
+      },
+    ]}
+  />
+  <RelatedLinks id="drywall" />
+  <ClosingCta />
+</Base>

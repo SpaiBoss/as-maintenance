@@ -1,0 +1,54 @@
+---
+import { servicePages, site } from "../config/site";
+import { mailHref, smsHref } from "../lib/contact";
+---
+
+<section class="section section-band">
+  <div class="wrap composer-wrap">
+    <h2>Get a free estimate</h2>
+    <p class="section-lede">
+      Write the job here. Text or email opens your own app so you can attach a photo. This site does not send or store
+      the message.
+    </p>
+    <div class="composer" data-composer>
+      <label>
+        Job
+        <select data-field="job" name="job">
+          {servicePages.map((service) => <option value={service.title}>{service.title}</option>)}
+        </select>
+      </label>
+      <label>
+        City
+        <select data-field="city" name="city">
+          {site.cities.map((city) => <option value={city}>{city}</option>)}
+          <option value="Other">Other</option>
+        </select>
+      </label>
+      <label>
+        Details
+        <textarea data-field="details" name="details" rows="5"></textarea>
+      </label>
+      <label>
+        Name, if you want to include it
+        <input data-field="name" name="name" type="text" autocomplete="name" />
+      </label>
+      <div class="contact-actions">
+        <a class="btn btn-gold" href={smsHref()} data-composer-go="text" data-track="composer_text" data-placement="composer">
+          Text this message
+        </a>
+        <a
+          class="btn btn-navy"
+          href={mailHref()}
+          data-composer-go="email"
+          data-track="composer_email"
+          data-placement="composer"
+        >
+          Email this message
+        </a>
+        <button type="button" class="btn btn-navy" data-composer-copy>Copy message</button>
+      </div>
+      <p class="copy-status" data-composer-status aria-live="polite"></p>
+      <pre data-composer-fallback hidden></pre>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,75 @@
+---
+import type { ImageMetadata } from "astro";
+import { getImage } from "astro:assets";
+import ContactButtons from "./ContactButtons.astro";
+import TapeRule from "./TapeRule.astro";
+import Breadcrumbs from "./Breadcrumbs.astro";
+
+interface Props {
+  title: string;
+  lede: string;
+  crumb?: string;
+  showEmail?: boolean;
+  textLabel?: string;
+  textBody?: string;
+  image?: ImageMetadata;
+  imageAlt?: string;
+  actions?: boolean;
+}
+
+const {
+  title,
+  lede,
+  crumb,
+  showEmail = false,
+  textLabel,
+  textBody,
+  image,
+  imageAlt,
+  actions = true,
+} = Astro.props;
+
+const heroBg = image
+  ? await getImage({
+      src: image,
+      widths: [640, 960, 1400],
+      quality: 62,
+      format: "webp",
+    })
+  : null;
+---
+
+<header class:list={["page-hero", heroBg && "page-hero-media"]}>
+  {
+    heroBg && imageAlt && (
+      <img
+        class="hero-bg"
+        src={heroBg.src}
+        srcset={heroBg.srcSet.attribute}
+        sizes="100vw"
+        alt={imageAlt}
+        width={heroBg.attributes.width}
+        height={heroBg.attributes.height}
+        fetchpriority="high"
+        decoding="async"
+      />
+    )
+  }
+  <div class="wrap page-hero-copy">
+    {crumb && <Breadcrumbs current={crumb} />}
+    <h1>{title}</h1>
+    <p class="lede">{lede}</p>
+    {
+      actions && (
+        <ContactButtons
+          trackLabel="hero"
+          tone="dark"
+          showEmail={showEmail}
+          textLabel={textLabel}
+          textBody={textBody}
+        />
+      )
+    }
+  </div>
+  <TapeRule />
+</header>

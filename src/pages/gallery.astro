@@ -1,0 +1,50 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Photo from "../components/Photo.astro";
+import { site } from "../config/site";
+import { photoAlt, photos } from "../lib/photos";
+
+const shots = [
+  { src: photos.hero, alt: photoAlt.hero, caption: "Living room with a hardwood floor" },
+  { src: photos.hardwood, alt: photoAlt.hardwood, caption: "Hardwood floorboards" },
+  { src: photos.vinyl, alt: photoAlt.vinyl, caption: "Wood-look vinyl plank" },
+  { src: photos.laminate, alt: photoAlt.laminate, caption: "Laminate floor and baseboard" },
+  { src: photos.drywall, alt: photoAlt.drywall, caption: "Finishing a drywall seam" },
+  { src: photos.painting, alt: photoAlt.painting, caption: "Rolling paint on an interior wall" },
+  { src: photos.furniture, alt: photoAlt.furniture, caption: "Assembling a bookshelf" },
+  { src: photos.rental, alt: photoAlt.rental, caption: "Empty rental bedroom" },
+  { src: photos.door, alt: photoAlt.door, caption: "Repairing an interior door latch" },
+  { src: photos.homes, alt: photoAlt.homes, caption: "A residential street" },
+];
+---
+
+<Base
+  title="Job photos | A&S Maintenance"
+  description="Photos that show the kinds of handyman work A&S Maintenance does. These are not photos of finished jobs."
+  noindex={!site.features.gallery}
+>
+  <PageHero
+    title="Job photos"
+    lede="These photos show the kinds of work we do. They are not photos of finished A&S jobs."
+    image={photos.hero}
+    imageAlt={photoAlt.hero}
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <ul class="photo-grid">
+        {
+          shots.map((shot) => (
+            <li>
+              <figure>
+                <Photo src={shot.src} alt={shot.alt} sizes="(min-width: 760px) 36rem, 100vw" />
+                <figcaption>{shot.caption}</figcaption>
+              </figure>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Base>

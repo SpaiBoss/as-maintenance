@@ -1,0 +1,24 @@
+---
+import ContactButtons from "./ContactButtons.astro";
+
+interface Props {
+  heading?: string;
+  textLabel?: string;
+  textBody?: string;
+  showEmail?: boolean;
+}
+
+const {
+  heading = "Call or text for a free estimate",
+  textLabel,
+  textBody,
+  showEmail = false,
+} = Astro.props;
+---
+
+<section class="section cta-band">
+  <div class="wrap">
+    <h2>{heading}</h2>
+    <ContactButtons trackLabel="bottom" showEmail={showEmail} textLabel={textLabel} textBody={textBody} />
+  </div>
+</section>

@@ -1,0 +1,55 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Faq from "../components/Faq.astro";
+import RelatedLinks from "../components/RelatedLinks.astro";
+import ClosingCta from "../components/ClosingCta.astro";
+import { photoAlt, photos } from "../lib/photos";
+---
+
+<Base
+  title="General Handyman Services | Twin Cities | A&S Maintenance"
+  description="Door and lock repairs, caulking, and other handyman work in the Twin Cities. If it is not listed, text a photo and ask."
+>
+  <PageHero
+    crumb="Handyman"
+    title="General handyman services"
+    lede="Door and lock repairs, caulking, and more. If it is not listed, text us a photo and ask."
+    image={photos.door}
+    imageAlt={photoAlt.door}
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Door and lock repairs, caulking, and more</h2>
+      <p class="measure">
+        Sticky doors, lock repairs, caulking, and other small jobs around the house or a rental. No job too small.
+      </p>
+      <h2>If it is not listed</h2>
+      <p class="measure">Text us a photo and ask. We will tell you if it is work we can do, then send a free estimate.</p>
+    </div>
+  </section>
+
+  <Faq
+    items={[
+      {
+        question: "What handyman work do you do?",
+        answer: "Door and lock repairs, caulking, and more.",
+      },
+      {
+        question: "What if my job is not listed?",
+        answer: "Text us a photo and ask.",
+      },
+      {
+        question: "Is a small repair worth a text?",
+        answer: "Yes. No job too small.",
+      },
+      {
+        question: "How do estimates work?",
+        answer: "Call or text, get a free estimate, then book a time if you want the work done.",
+      },
+    ]}
+  />
+  <RelatedLinks id="handyman" />
+  <ClosingCta />
+</Base>

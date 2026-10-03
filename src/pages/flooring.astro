@@ -1,0 +1,80 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Faq from "../components/Faq.astro";
+import RelatedLinks from "../components/RelatedLinks.astro";
+import ClosingCta from "../components/ClosingCta.astro";
+import Photo from "../components/Photo.astro";
+import { photoAlt, photos } from "../lib/photos";
+---
+
+<Base
+  title="Flooring Installation & Repair in the Twin Cities | A&S Maintenance"
+  description="Hardwood, vinyl, and laminate installation and repair in the Twin Cities, plus hardwood refinishing. Free estimates. Call or text 612-707-3149."
+>
+  <PageHero
+    crumb="Flooring"
+    title="Hardwood, vinyl and laminate flooring"
+    lede="Installation and repair for hardwood, vinyl, and laminate. Hardwood work also includes refinishing."
+    image={photos.hardwood}
+    imageAlt={photoAlt.hardwood}
+  />
+
+  <section class="section">
+    <div class="wrap prose">
+      <div class="split">
+        <Photo src={photos.hardwood} alt={photoAlt.hardwood} sizes="(min-width: 800px) 16rem, 100vw" />
+        <div>
+          <h2>Hardwood flooring</h2>
+          <p class="measure">We install hardwood, repair damaged boards, and refinish worn floors.</p>
+        </div>
+      </div>
+      <div class="split">
+        <Photo src={photos.vinyl} alt={photoAlt.vinyl} sizes="(min-width: 800px) 16rem, 100vw" />
+        <div>
+          <h2>Vinyl flooring</h2>
+          <p class="measure">We install vinyl flooring and repair damaged sections.</p>
+        </div>
+      </div>
+      <div class="split">
+        <Photo src={photos.laminate} alt={photoAlt.laminate} sizes="(min-width: 800px) 16rem, 100vw" />
+        <div>
+          <h2>Laminate flooring</h2>
+          <p class="measure">We install laminate flooring and repair damaged sections.</p>
+        </div>
+      </div>
+      <div class="subsection">
+        <h2>What to text</h2>
+        <p class="measure">Send the room size, a photo of the current floor, and the problem area.</p>
+      </div>
+    </div>
+  </section>
+
+  <Faq
+    items={[
+      {
+        question: "What flooring do you work on?",
+        answer:
+          "Hardwood, vinyl, and laminate. Hardwood includes installation, repair, and refinishing. Vinyl and laminate include installation and repair.",
+      },
+      {
+        question: "What should I send with the text?",
+        answer: "A photo of the room, the room size, the current floor, and the problem area.",
+      },
+      {
+        question: "Do you charge for an estimate?",
+        answer: "No. Estimates are free, with no obligation and no pressure.",
+      },
+      {
+        question: "Do you work in homes and rentals?",
+        answer: "Yes. We take residential and rental properties.",
+      },
+      {
+        question: "How do I book?",
+        answer: "Text or call with the job, get a free estimate, then book a time.",
+      },
+    ]}
+  />
+  <RelatedLinks id="flooring" />
+  <ClosingCta />
+</Base>

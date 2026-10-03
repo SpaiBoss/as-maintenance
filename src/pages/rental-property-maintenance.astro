@@ -1,0 +1,82 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Faq from "../components/Faq.astro";
+import RelatedLinks from "../components/RelatedLinks.astro";
+import ClosingCta from "../components/ClosingCta.astro";
+import Photo from "../components/Photo.astro";
+import { photoAlt, photos } from "../lib/photos";
+
+const textBody =
+  "Hi A&S Maintenance, I need an estimate for rental property work. Units and issues: ";
+const textLabel = "Text a list of units and issues";
+---
+
+<Base
+  title="Rental Property Maintenance & Turnovers | Twin Cities | A&S Maintenance"
+  description="Turnovers, repairs, and ongoing maintenance for Twin Cities rental properties. Text a list of units and issues. Free estimates."
+>
+  <PageHero
+    crumb="Rental properties"
+    title="Rental property maintenance and turnovers"
+    lede="Turnovers, repairs, and ongoing maintenance for rental properties. Text a list of units and issues."
+    textLabel={textLabel}
+    textBody={textBody}
+    image={photos.rental}
+    imageAlt={photoAlt.rental}
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="subsection">
+        <h2>Turnovers</h2>
+        <p class="measure">
+          Send the unit list and what has to be ready for the next tenant. We reply with a free estimate.
+        </p>
+      </div>
+      <div class="split">
+        <Photo src={photos.door} alt={photoAlt.door} sizes="(min-width: 800px) 16rem, 100vw" />
+        <div>
+          <h2>Repairs</h2>
+          <p class="measure">Doors, locks, caulking, drywall, paint, flooring, and other repairs between tenants or during a lease.</p>
+        </div>
+      </div>
+      <div class="subsection">
+        <h2>Ongoing maintenance</h2>
+        <p class="measure">
+          Keep one thread going. Text new issues as they come up, and book the visits that you want.
+        </p>
+      </div>
+      <div class="subsection">
+        <h2>What to text</h2>
+        <p class="measure">
+          Text a list of units and the issues in each one. Photos help. There is no obligation to book after the
+          estimate.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Faq
+    items={[
+      {
+        question: "What does rental maintenance include?",
+        answer: "Turnovers, repairs, and ongoing maintenance.",
+      },
+      {
+        question: "How should I send the work?",
+        answer: "Text a list of units and the issues in each one.",
+      },
+      {
+        question: "Can you handle one repair?",
+        answer: "Yes. No job too small.",
+      },
+      {
+        question: "What happens after I text?",
+        answer: "You get a free estimate. Book a time if you want the work done. No obligation and no pressure.",
+      },
+    ]}
+  />
+  <RelatedLinks id="rentals" />
+  <ClosingCta heading="Text a list of units and issues" textLabel={textLabel} textBody={textBody} />
+</Base>

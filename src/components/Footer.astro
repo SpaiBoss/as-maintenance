@@ -1,0 +1,57 @@
+---
+import { servicePages, site } from "../config/site";
+import ContactButtons from "./ContactButtons.astro";
+import CopyEmail from "./CopyEmail.astro";
+import TapeRule from "./TapeRule.astro";
+import { callLabel, telHref } from "../lib/contact";
+
+const quickLinks = [
+  ...servicePages.map((service) => ({
+    href: service.href,
+    label:
+      service.id === "drywall"
+        ? "Drywall"
+        : service.id === "furniture"
+          ? "Furniture"
+          : service.id === "rentals"
+            ? "Rentals"
+            : service.nav,
+  })),
+  { href: "/service-area/", label: "Areas" },
+  { href: "/about/", label: "About" },
+  { href: "/contact/", label: "Contact" },
+  { href: "/privacy/", label: "Privacy" },
+];
+---
+
+<footer class="site-footer">
+  <TapeRule />
+  <div class="wrap footer-main">
+    <div class="footer-brand">
+      <p class="footer-name">{site.legalName}</p>
+      <p class="footer-tag">{site.tagline}</p>
+      <p class="footer-serve">Serving {site.region}.</p>
+    </div>
+    <div class="footer-contact">
+      <a class="footer-phone" href={telHref} aria-label={callLabel}>{site.phoneDisplay}</a>
+      <CopyEmail placement="footer" />
+      {site.hours && <p class="footer-hours">Hours: {site.hours}</p>}
+      <ContactButtons variant="row" trackLabel="footer" tone="dark" />
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div class="wrap footer-bar-inner">
+      <nav aria-label="Footer">
+        <ul class="footer-links">
+          {
+            quickLinks.map((item) => (
+              <li>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>

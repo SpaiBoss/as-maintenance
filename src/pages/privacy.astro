@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import CopyEmail from "../components/CopyEmail.astro";
+import { site } from "../config/site";
+import { callLabel, telHref } from "../lib/contact";
+---
+
+<Base
+  title="Privacy | A&S Maintenance"
+  description="This site has no forms or accounts. Contact A&S Maintenance by phone, text, or email. Google Analytics loads only if it is enabled."
+>
+  <PageHero title="Privacy" lede="Plain answers about what this website does with your visit." actions={false} />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>No accounts and no forms</h2>
+      <p class="measure">
+        This site does not create accounts, and it does not take form submissions. Nothing you type into the estimate
+        helper is stored here. Text, call, and email leave this site and open on your phone or computer.
+      </p>
+      <h2>How to reach us</h2>
+      <p class="measure">
+        Contact {site.legalName} by phone at <a href={telHref} aria-label={callLabel}>{site.phoneDisplay}</a>, by text
+        message to that same number, or by email.
+      </p>
+      <CopyEmail placement="hero" />
+      <h2>Analytics</h2>
+      <p class="measure">
+        If analytics are enabled, the site loads Google Analytics (GA4) to count visits and button clicks. If they are
+        not enabled, that script is not loaded. This site does not use a cookie-banner library.
+      </p>
+    </div>
+  </section>
+</Base>

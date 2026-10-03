@@ -1,0 +1,49 @@
+---
+import { callLabel, defaultSmsBody, mailHref, smsHref, telHref } from "../lib/contact";
+
+interface Props {
+  variant?: "stack" | "row" | "bar";
+  trackLabel: string;
+  showEmail?: boolean;
+  tone?: "light" | "dark";
+  textLabel?: string;
+  textBody?: string;
+}
+
+const {
+  variant = "stack",
+  trackLabel,
+  showEmail = false,
+  tone = "light",
+  textLabel = "Text a photo for a free estimate",
+  textBody = defaultSmsBody,
+} = Astro.props;
+---
+
+<div class:list={["contact-actions", `contact-actions-${variant}`, tone === "dark" && "contact-actions-dark"]}>
+  <a
+    class="btn btn-gold"
+    href={telHref}
+    aria-label={callLabel}
+    data-track="call"
+    data-placement={trackLabel}
+  >
+    {variant === "bar" ? "Call" : callLabel}
+  </a>
+  <a
+    class="btn btn-navy"
+    href={smsHref(textBody)}
+    aria-label={textLabel}
+    data-track="text"
+    data-placement={trackLabel}
+  >
+    {variant === "bar" ? "Text" : textLabel}
+  </a>
+  {
+    showEmail && (
+      <a class="btn btn-navy" href={mailHref()} data-track="email" data-placement={trackLabel}>
+        Email an estimate request
+      </a>
+    )
+  }
+</div>

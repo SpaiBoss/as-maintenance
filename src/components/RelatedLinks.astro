@@ -1,0 +1,25 @@
+---
+import { relatedServices } from "../config/site";
+
+interface Props {
+  id: string;
+}
+
+const items = relatedServices(Astro.props.id);
+---
+
+<section class="section">
+  <div class="wrap">
+    <h2>Related services</h2>
+    <ul class="link-list">
+      {
+        items.map((service) => (
+          <li>
+            <a href={service.href}>{service.title}</a>
+          </li>
+        ))
+      }
+      <li><a href="/service-area/">Twin Cities service area</a></li>
+    </ul>
+  </div>
+</section>

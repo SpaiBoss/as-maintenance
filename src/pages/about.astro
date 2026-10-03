@@ -1,0 +1,47 @@
+---
+// TODO(client): owner name and short background.
+// TODO(client): define what satisfaction guaranteed means in practice.
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import ClosingCta from "../components/ClosingCta.astro";
+import { servicePages, site } from "../config/site";
+import { photoAlt, photos } from "../lib/photos";
+---
+
+<Base
+  title="About A&S Maintenance | Twin Cities"
+  description="A&S Maintenance LLC serves Twin Cities homes and rental properties. Quality work, honest pricing, and reliable service. Call or text 612-707-3149."
+>
+  <PageHero
+    title="About A&S Maintenance"
+    lede={`${site.legalName} is a handyman business for homes and rental properties in the Twin Cities. ${site.tagline}`}
+    image={photos.hero}
+    imageAlt={photoAlt.hero}
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <h2>The work</h2>
+      <ul class="link-list">
+        {
+          servicePages.map((service) => (
+            <li>
+              <a href={service.href}>{service.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <h2>How we work</h2>
+      <p class="measure">
+        Free estimates. No obligation and no pressure. Fast response. Friendly service. Residential and rental
+        properties. No job too small.
+      </p>
+      <p class="measure">
+        Satisfaction guaranteed is printed on our flyer. Call or text and ask what that covers for your job.
+      </p>
+      <p class="measure">Improving homes. Building trust.</p>
+    </div>
+  </section>
+
+  <ClosingCta />
+</Base>

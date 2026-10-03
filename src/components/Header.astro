@@ -1,0 +1,39 @@
+---
+// TODO(client): replace this type wordmark with the client's logo SVG.
+import { headerNav, site } from "../config/site";
+import { callLabel, telHref } from "../lib/contact";
+
+const [lead, ...rest] = site.name.split(" ");
+---
+
+<header class="site-header">
+  <div class="wrap header-bar">
+    <a class="wordmark" href="/">{lead} <span>{rest.join(" ")}</span></a>
+    <nav class="nav-desktop" aria-label="Primary">
+      <ul>
+        {
+          headerNav.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <a class="header-phone" href={telHref} aria-label={callLabel}>{site.phoneDisplay}</a>
+    <details class="nav-mobile">
+      <summary>Menu</summary>
+      <nav aria-label="Primary">
+        <ul>
+          {
+            headerNav.map((item) => (
+              <li>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>

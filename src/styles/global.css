@@ -128,6 +128,14 @@ a:hover {
   color: rgb(21 26 34 / 78%);
 }
 
+.section-head {
+  margin-bottom: 0.25rem;
+}
+
+.section-head .section-lede {
+  margin-bottom: 2rem;
+}
+
 .lede {
   font-size: 1.125rem;
   max-width: 70ch;
@@ -498,16 +506,21 @@ a:hover {
 }
 
 .steps li {
-  padding: 0 0 0.25rem;
+  position: relative;
+  padding: 1.35rem 1.2rem 1.4rem;
+  background: var(--paper);
+  border-top: 4px solid var(--gold);
 }
 
-.step-label {
-  margin: 0 0 0.45rem;
-  color: var(--blue);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-size: 0.8rem;
+.step-num {
+  display: block;
+  margin: 0 0 0.65rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 10vw, 4.25rem);
+  line-height: 0.85;
+  letter-spacing: 0.02em;
+  color: var(--gold);
 }
 
 .steps h3,
@@ -515,10 +528,14 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
+.steps h3 {
+  max-width: 12ch;
+}
+
 .steps p,
 .why p {
   margin: 0;
-  max-width: 32ch;
+  max-width: 28ch;
   color: rgb(21 26 34 / 80%);
 }
 
@@ -917,8 +934,24 @@ textarea {
   }
 
   .steps {
+    position: relative;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .steps::before {
+    content: "";
+    position: absolute;
+    top: 2.35rem;
+    left: 12%;
+    right: 12%;
+    height: 3px;
+    background: var(--gold);
+    pointer-events: none;
+  }
+
+  .steps li {
+    padding: 1.5rem 1.35rem 1.6rem;
   }
 
   .service-list {

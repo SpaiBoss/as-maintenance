@@ -14,13 +14,15 @@ const { steps, heading = "How it works" } = Astro.props;
 
 <section class="section section-band">
   <div class="wrap">
-    <h2>{heading}</h2>
-    <p class="section-lede">Three short steps. No forms on this site.</p>
+    <div class="section-head">
+      <h2>{heading}</h2>
+      <p class="section-lede">Text a photo, get a free estimate, then book. No forms on this site.</p>
+    </div>
     <ol class="steps">
       {
         steps.map((step, index) => (
           <li>
-            <p class="step-label">Step {index + 1}</p>
+            <span class="step-num" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
             <h3>{step.title}</h3>
             <p>{step.text}</p>
           </li>

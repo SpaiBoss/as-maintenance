@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://asmaintenanceservices.com/sitemap-index.xml
+Sitemap: https://as-maintenance.com/sitemap-index.xml

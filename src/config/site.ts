@@ -1,5 +1,5 @@
-// TODO(client): confirm services@asmaintenanceservices.com is live and monitored.
-// TODO(client): registrar and DNS access for asmaintenanceservices.com.
+// TODO(client): confirm services@as-maintenance.com is live and monitored.
+// TODO(client): registrar and DNS access for as-maintenance.com.
 // TODO(client): real job photos (at least 6, ideally before and after) and a logo SVG.
 // TODO(client): license numbers and insurance status.
 // TODO(client): owner name and short background.
@@ -12,10 +12,10 @@
 export const site = {
   name: "A&S Maintenance",
   legalName: "A&S Maintenance LLC",
-  url: "https://asmaintenanceservices.com",
+  url: "https://as-maintenance.com",
   phoneDisplay: "612-707-3149",
   phoneE164: "+16127073149",
-  email: "services@asmaintenanceservices.com", // UNVERIFIED: confirm it is live before launch
+  email: "services@as-maintenance.com", // UNVERIFIED: confirm it is live and monitored
   tagline: "Quality work. Honest pricing. Reliable service.",
   region: "Twin Cities, MN",
   cities: [
